@@ -110,6 +110,14 @@ static struct fb_videomode ldb_modedb[] = {
          FB_VMODE_NONINTERLACED,
          FB_MODE_IS_DETAILED,
      },
+         {
+         "LDB-beijing", 60, 960, 540, 14705,
+         240, 88,
+         60, 32,
+         20, 3,
+         0,
+         FB_VMODE_NONINTERLACED,
+         FB_MODE_IS_DETAILED,},
 	{
 	 "LDB-WXGA", 60, 1280, 800, 14065,
 	 40, 40,
