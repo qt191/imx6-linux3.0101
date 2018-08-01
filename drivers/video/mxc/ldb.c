@@ -117,6 +117,12 @@ static struct fb_videomode ldb_modedb[] = {
          FB_MODE_IS_DETAILED,
      },
 
+    {
+         "beijing-800x480", 59, 800, 480, 33898, 96, 24, 3, 10, 72, 7,
+         0,
+         FB_VMODE_NONINTERLACED,
+         FB_MODE_IS_DETAILED,
+     },
       {
          "SEIKO-WVGA", 60, 800, 480, 29850, 89, 164, 23, 10, 10, 10,
          0,
