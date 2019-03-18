@@ -112,6 +112,10 @@
 #define QY_RS485_1_FLOW_GPIO  IMX_GPIO_NR(6 , 4)//uart 4
 #define QY_RS485_2_FLOW_GPIO  IMX_GPIO_NR(6 , 5)//uart 5
 
+//#define QY_IMX6S_VOLUME_UP     IMX_GPIO_NR(7 , 11)
+//#define QY_IMX6S_VOLUME_DN    IMX_GPIO_NR(7 , 12)
+//#define QY_IMX6S_POWER_OFF    IMX_GPIO_NR(7 , 13)
+#define QY_IMX6S_VOLUME_DN    IMX_GPIO_NR(1 , 7)
 static struct clk *sata_clk;
 static struct clk *clko;
 static int caam_enabled;
@@ -1009,9 +1013,9 @@ static void __init imx6q_add_device_gpio_leds(void) {}
 }
 
 static struct gpio_keys_button imx6q_buttons[] = {
-	//GPIO_BUTTON(QY_IMX6S_VOLUME_UP, KEY_VOLUMEUP, 1, "volume-up", 0, 1),
-	//GPIO_BUTTON(QY_IMX6S_VOLUME_DN, KEY_VOLUMEDOWN, 1, "volume-down", 0, 1),
-	//GPIO_BUTTON(QY_IMX6S_POWER_OFF, KEY_POWER, 1, "power", 1, 1),
+//	GPIO_BUTTON(QY_IMX6S_VOLUME_UP, KEY_VOLUMEUP, 1, "volume-up", 0, 1),
+	GPIO_BUTTON(QY_IMX6S_VOLUME_DN, KEY_VOLUMEDOWN, 1, "volume-down", 0, 1),
+//	GPIO_BUTTON(QY_IMX6S_POWER_OFF, KEY_POWER, 1, "power", 1, 1),
 };
 
 static struct gpio_keys_platform_data imx6q_button_data = {
@@ -1204,13 +1208,14 @@ const struct matrix_keymap_data imx_sabresd_keymap_data = {
 };
 
 static const unsigned int imx_sabresd_keypad_row_gpios[] = {
-	
-	IMX_GPIO_NR(2, 0), IMX_GPIO_NR(2, 2), IMX_GPIO_NR(2, 4),IMX_GPIO_NR(2, 6)
+//        IMX_GPIO_NR(1, 4), IMX_GPIO_NR(1, 7), IMX_GPIO_NR(1, 8),IMX_GPIO_NR(1, 9)	
+//	IMX_GPIO_NR(2, 0), IMX_GPIO_NR(2, 2), IMX_GPIO_NR(2, 4),IMX_GPIO_NR(2, 6)
+
 };
 
 static const unsigned int imx_sabresd_keypad_col_gpios[] = {
-	
-	IMX_GPIO_NR(2, 1), IMX_GPIO_NR(2, 3),IMX_GPIO_NR(2, 5), IMX_GPIO_NR(2, 7)
+//        IMX_GPIO_NR(7, 11), IMX_GPIO_NR(7, 12),IMX_GPIO_NR(7, 13), IMX_GPIO_NR(4, 5)	
+//	IMX_GPIO_NR(2, 1), IMX_GPIO_NR(2, 3),IMX_GPIO_NR(2, 5), IMX_GPIO_NR(2, 7)
 };
 
 static struct matrix_keypad_platform_data imx_sabresd_keypad_platform_data = {
