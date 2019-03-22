@@ -234,8 +234,10 @@ static void option_instat_callback(struct urb *urb);
 #define YUGA_PRODUCT_CLM920_CN     0x9025
 #define QUECTEL_UC15               0x9090
 
-#define SIMCOM_SIM7100_VID                     0x1E0E 
-#define SIMCOM_SIM7100_PID                     0x9001
+//#define SIMCOM_SIM7100_VID                     0x1E0E 
+//#define SIMCOM_SIM7100_PID                     0x9001
+#define SIMCOM_SIM7600_VID  0x1E0E
+#define SIMCOM_SIM7600_PID  0x9001
 
 #define NEO_N710_VID                     0x05c6 
 #define NEO_N710_PID                     0x8080
@@ -554,7 +556,8 @@ static const struct option_blacklist_info telit_le920_blacklist = {
 
 static const struct usb_device_id option_ids[] = {
 	{ USB_DEVICE(QUALCOMM_VENDOR_ID, QUECTEL_UC15) },/* UC15 */
-	{ USB_DEVICE(SIMCOM_SIM7100_VID, SIMCOM_SIM7100_PID)}, /* SIM7100 SIM7600*/ 
+//	{ USB_DEVICE(SIMCOM_SIM7100_VID, SIMCOM_SIM7100_PID)}, /* SIM7100 SIM7600*/ 
+        { USB_DEVICE(SIMCOM_SIM7600_VID, SIMCOM_SIM7600_PID)}, /*SIM7600 */
 	{ USB_DEVICE(NEO_N710_VID, NEO_N710_PID)}, 		/* N710 */ 
 	{ USB_DEVICE(QUALCOMM_VENDOR_ID, YUGA_PRODUCT_CLM920_CN) }, /* YUGA */
 
@@ -1610,6 +1613,12 @@ static int option_send_setup(struct usb_serial_port *port)
 	int ifNum = serial->interface->cur_altsetting->desc.bInterfaceNumber;
 	int val = 0;
 	dbg("%s", __func__);
+
+        /* sim7600 */
+        if (serial->dev->descriptor.idVendor == SIMCOM_SIM7600_VID &&
+        serial->dev->descriptor.idProduct == SIMCOM_SIM7600_PID &&
+        serial->interface->cur_altsetting->desc.bInterfaceNumber == 5 )
+        return -ENODEV;
 
 	if (is_blacklisted(ifNum, OPTION_BLACKLIST_SENDSETUP,
 			(struct option_blacklist_info *) intfdata->private)) {

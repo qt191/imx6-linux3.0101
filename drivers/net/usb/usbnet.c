@@ -340,14 +340,21 @@ static int rx_submit (struct usbnet *dev, struct urb *urb, gfp_t flags)
 	unsigned long		lockflags;
 	size_t			size = dev->rx_urb_size;
 
-	if ((skb = alloc_skb (size + NET_IP_ALIGN, flags)) == NULL) {
+	//@@xiaobin.wang modify 20170109
+	//if ((skb = alloc_skb (size + NET_IP_ALIGN, flags)) == NULL) {
+	skb =  __netdev_alloc_skb(dev, size + NET_IP_ALIGN, flags);
+	if (NET_IP_ALIGN && skb)
+		skb_reserve(skb, NET_IP_ALIGN);
+	if(!skb)
+	{
 		netif_dbg(dev, rx_err, dev->net, "no rx skb\n");
 		usbnet_defer_kevent (dev, EVENT_RX_MEMORY);
 		usb_free_urb (urb);
 		return -ENOMEM;
 	}
-	skb_reserve (skb, NET_IP_ALIGN);
-
+	//skb_reserve (skb, NET_IP_ALIGN);
+    //@@xiaobin.wang modify 20170109
+	
 	entry = (struct skb_data *) skb->cb;
 	entry->urb = urb;
 	entry->dev = dev;
