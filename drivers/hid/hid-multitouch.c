@@ -597,6 +597,14 @@ static const struct hid_device_id mt_devices[] = {
 		HID_USB_DEVICE(USB_VENDOR_ID_3M,
 			USB_DEVICE_ID_3M3266) },
 
+         //ILITEK DULA TOUCH panels
+         { .driver_data = MT_CLS_DEFAULT,
+                HID_USB_DEVICE(USB_VENDOR_ID_ILITEK,
+                        USB_DEVICE_ID_ILITEK_MULTITOUCH) },
+                  { HID_USB_DEVICE(0x222A,0x0006) },
+                  { HID_USB_DEVICE(0x222A,0x0010) },
+                  { HID_USB_DEVICE(0x222A,0x0001) },
+
 	/* ActionStar panels */
 	{ .driver_data = MT_CLS_DEFAULT,
 		HID_USB_DEVICE(USB_VENDOR_ID_ACTIONSTAR,
