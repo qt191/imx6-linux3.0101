@@ -1038,9 +1038,16 @@ static void __init imx6q_add_device_buttons(void) {}
 
 static struct platform_pwm_backlight_data mx6_qy_imx6s_pwm_backlight_data = {
 	.pwm_id = 1,
-	.max_brightness = 248,
-	.dft_brightness = 128,
+	.max_brightness = 100,
+	.dft_brightness = 50,
 	.pwm_period_ns = 50000,
+};
+
+static struct platform_pwm_backlight_data mx6_sabresd_pwm_backlight_data = {
+        .pwm_id = 0,
+        .max_brightness = 248,
+        .dft_brightness = 128,
+        .pwm_period_ns = 50000,
 };
 
 static struct mxc_dvfs_platform_data qy_imx6s_dvfscore_data = {
@@ -1365,7 +1372,10 @@ static void __init mx6_qy_imx6s_board_init(void)
 	imx6q_add_mxc_pwm(2);
 	imx6q_add_mxc_pwm(3);
 	*/
-	imx6q_add_mxc_pwm(1);
+        imx6q_add_mxc_pwm(0);
+//        imx6q_add_mxc_pwm_backlight(0, &mx6_qy_imx6s_pwm_backlight_data);
+        imx6q_add_mxc_pwm_backlight(0, &mx6_sabresd_pwm_backlight_data);
+ 	imx6q_add_mxc_pwm(1);
 	imx6q_add_mxc_pwm_backlight(1, &mx6_qy_imx6s_pwm_backlight_data);
 	
 
