@@ -1045,8 +1045,8 @@ static struct platform_pwm_backlight_data mx6_qy_imx6s_pwm_backlight_data = {
 
 static struct platform_pwm_backlight_data mx6_sabresd_pwm_backlight_data = {
         .pwm_id = 0,
-        .max_brightness = 248,
-        .dft_brightness = 128,
+        .max_brightness = 100,
+        .dft_brightness = 50,
         .pwm_period_ns = 50000,
 };
 
