@@ -128,9 +128,9 @@ static int buzzer_probe(struct platform_device *pdev)
 
 	printk("Buzzer misc register successed: \n");
 	
-	gpio_set_value(pin_number,1); 	
+	gpio_set_value(pin_number,0); 	
 	msleep(500);		
-	gpio_set_value(pin_number,0);
+	gpio_set_value(pin_number,1);
 
 	return ret;
 	
