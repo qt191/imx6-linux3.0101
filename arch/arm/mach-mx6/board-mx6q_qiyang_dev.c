@@ -481,6 +481,10 @@ static struct i2c_board_info mxc_i2c2_board_info[] __initdata = {
 	{
 			I2C_BOARD_INFO("ft5x0x_ts", 0x38),
 	},
+
+       {
+			I2C_BOARD_INFO("ilitek_ts", 0x41),
+	},
 };
 
 static void imx6q_qy_imx6s_usbotg_vbus(bool on)
