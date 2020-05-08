@@ -57,6 +57,17 @@
 #include <linux/earlysuspend.h>
 #include <linux/wakelock.h>
 #endif
+#include <mach/gpio.h>
+#include <linux/gpio.h>
+#include <linux/interrupt.h>
+#include <linux/irq.h>
+#define GPIO_TO_PIN(bank, gpio) (32 * (bank-1) + (gpio))
+#define GPIO4_25                 GPIO_TO_PIN(4, 25)
+#define GPIO4_27                 GPIO_TO_PIN(4, 27)
+#define ILITEK_IRQ_GPIO                GPIO4_25
+#define ILITEK_RESET_GPIO              GPIO4_27 
+#define ATTB                GPIO_INT
+#define get_attb_value      gpio_get_value
 
 //driver information
 #define DERVER_VERSION_MAJOR 		5
@@ -85,18 +96,18 @@
 
 //#define ILITEK_ESD_PROTECTION
 
-#define ILITEK_TOUCH_PROTOCOL_B
+#define ILITEK_TOUCH_PROTOCOL_B 
 
 //#define ILITEK_USE_LCM_RESOLUTION
 
 #define ILITEK_ROTATE_FLAG												0
 #define ILITEK_REVERT_X													0
 #define ILITEK_REVERT_Y													0
-#define TOUCH_SCREEN_X_MAX   											(1080)  //LCD_WIDTH
-#define TOUCH_SCREEN_Y_MAX   											(1920) //LCD_HEIGHT
+#define TOUCH_SCREEN_X_MAX   											(1280)  //LCD_WIDTH
+#define TOUCH_SCREEN_Y_MAX   											(800) //LCD_HEIGHT
 
 #define ILITEK_ENABLE_REGULATOR_POWER_ON
-#define ILITEK_GET_GPIO_NUM
+//#define ILITEK_GET_GPIO_NUM
 
 
 #define ILITEK_CLICK_WAKEUP												0
@@ -176,18 +187,6 @@ extern struct touch_vitual_key_map_t touch_key_point_maping_array[];
 #include <linux/of_irq.h>
 #include <linux/gpio.h>
 
-#include <mach/gpio.h>
-#include <linux/gpio.h>
-#include <linux/interrupt.h>
-#include <linux/irq.h>
-#define GPIO_TO_PIN(bank, gpio) (32 * (bank-1) + (gpio))
-#define GPIO4_25                 GPIO_TO_PIN(4, 25)
-#define GPIO4_27                 GPIO_TO_PIN(4, 27)
-#define ILITEK_IRQ_GPIO                GPIO4_25
-#define ILITEK_RESET_GPIO              GPIO4_27 
-#define ATTB                GPIO_INT
-#define get_attb_value      gpio_get_value
-
 //#define RESETPIN_SET0       gpio_direction_output(GPIO_RESET,0)
 //#define RESETPIN_SET1       gpio_direction_output(GPIO_RESET,1)
 //#define RESETPIN_REQUEST    gpio_request(GPIO_RESET, "GPIO_RESET")
@@ -227,8 +226,8 @@ extern struct ctp_config_info config_info;
 #define ILITEK_IRQ_GPIO													(config_info.int_number)
 #define ILITEK_RESET_GPIO												(config_info.wakeup_gpio.gpio)
 #else
-#define ILITEK_IRQ_GPIO													9
-#define ILITEK_RESET_GPIO												10
+#define ILITEK_IRQ_GPIO													GPIO4_25
+#define ILITEK_RESET_GPIO												GPIO4_27
 #endif
 #endif
 

@@ -793,8 +793,8 @@ static int ilitek_set_input_param(void)
 	input_set_abs_params(input, ABS_MT_POSITION_X, 0, TOUCH_SCREEN_X_MAX, 0, 0);
 	input_set_abs_params(input, ABS_MT_POSITION_Y, 0, TOUCH_SCREEN_Y_MAX, 0, 0);
 	#else
-	input_set_abs_params(input, ABS_MT_POSITION_X, ilitek_data->screen_min_x, ilitek_data->screen_max_x, 0, 0);
-	input_set_abs_params(input, ABS_MT_POSITION_Y, ilitek_data->screen_min_y, ilitek_data->screen_max_y, 0, 0);
+	input_set_abs_params(input, ABS_X, ilitek_data->screen_min_x, ilitek_data->screen_max_x, 0, 0);
+	input_set_abs_params(input, ABS_Y, ilitek_data->screen_min_y, ilitek_data->screen_max_y, 0, 0);
 	#endif
 #else
 	#ifdef ILITEK_USE_LCM_RESOLUTION
@@ -863,8 +863,8 @@ static int ilitek_touch_down(int id, int x, int y, int pressure) {
 	input_mt_report_slot_state(input, MT_TOOL_FINGER, true);
 #endif
 #if !ILITEK_ROTATE_FLAG
-	input_event(input, EV_ABS, ABS_MT_POSITION_X, x);
-	input_event(input, EV_ABS, ABS_MT_POSITION_Y, y);
+	input_event(input, EV_ABS, ABS_X, x);
+	input_event(input, EV_ABS, ABS_Y, y);
 #else
 	input_event(input, EV_ABS, ABS_MT_POSITION_X, y);
 	input_event(input, EV_ABS, ABS_MT_POSITION_Y, x);
