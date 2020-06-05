@@ -92,9 +92,11 @@
  * We are required to configure VGA mode before reading edid
  * in HDMI Initialization Step B
  */
-static const struct fb_videomode vga_mode = {
+static const struct fb_videomode sxga_mode = {
 	/* 640x480 @ 60 Hz, 31.5 kHz hsync */
-	NULL, 60, 640, 480, 39721, 48, 16, 33, 10, 96, 2, 0,
+//	NULL, 60, 640, 480, 39721, 48, 16, 33, 10, 96, 2, 0,
+//      1280x800 无锡云可
+        NULL, 60, 1280, 800, 13468, 40, 40, 10, 3, 80, 10, 0,
 	FB_VMODE_NONINTERLACED | FB_VMODE_ASPECT_4_3, FB_MODE_IS_VESA,
 };
 
@@ -104,7 +106,7 @@ static const struct fb_videomode xga_mode = {
 	0, FB_VMODE_NONINTERLACED, FB_MODE_IS_VESA
 };
 
-static const struct fb_videomode sxga_mode = {
+static const struct fb_videomode vga_mode = {
 	/* 20 1280x1024-60 VESA */
 	NULL, 60, 1280, 1024, 9259, 248, 48, 38, 1, 112, 3,
 	FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT,
@@ -2501,6 +2503,7 @@ static int mxc_hdmi_disp_init(struct mxc_dispdrv_handle *disp,
 	/*Add XGA and SXGA to default modelist */
 	fb_add_videomode(&xga_mode, &hdmi->fbi->modelist);
 	fb_add_videomode(&sxga_mode, &hdmi->fbi->modelist);
+        fb_add_videomode(&vga_mode, &hdmi->fbi->modelist);
 
 	console_unlock();
 
