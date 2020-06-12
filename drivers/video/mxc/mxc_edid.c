@@ -124,6 +124,24 @@ const struct fb_videomode mxc_cea_mode[64] = {
 		FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT,
 		FB_VMODE_INTERLACED | FB_VMODE_ASPECT_16_9, 0,
 	},
+	/*无锡云可*/
+	[21] = {
+						 NULL, 60, 1280, 1024, 15384, 160, 24, 29, 3, 136, 6,
+						 FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT,
+						 FB_VMODE_INTERLACED | FB_VMODE_ASPECT_16_9, 0,
+	},
+
+    [22] = {
+						 NULL, 60, 1024, 768, 15384, 160, 24, 29, 3, 136, 6,
+						 FB_SYNC_HOR_HIGH_ACT | FB_SYNC_VERT_HIGH_ACT,
+						 FB_VMODE_INTERLACED | FB_VMODE_ASPECT_16_9, 0,
+	},
+#if 0	
+    [21] = {
+						 NULL, 60, 1024, 768, 15384, 160, 24, 29, 3, 136, 6,
+	0, FB_VMODE_NONINTERLACED, FB_MODE_IS_VESA
+
+#endif						 
 	/* #23: 720(1440)x288pH@50Hz 4:3 */
 	[23] = {
 		NULL, 50, 1440, 288, 37037, 138, 24, 19, 2, 126, 3, 0,
