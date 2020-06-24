@@ -109,6 +109,10 @@
 #define QY_IMX6S_CSI0_PWN        IMX_GPIO_NR(5 , 23)
 #define QY_IMX6S_CSI0_RST        IMX_GPIO_NR(5 , 24)
 
+#define QY_RS485_1_FLOW_GPIO  IMX_GPIO_NR(3 , 29)
+#define QY_RS485_2_FLOW_GPIO  IMX_GPIO_NR(3 , 31)
+
+
 static struct clk *sata_clk;
 static struct clk *clko;
 static int caam_enabled;
@@ -116,6 +120,31 @@ static int caam_enabled;
 extern char *gp_reg_id;
 extern char *soc_reg_id;
 extern char *pu_reg_id;
+
+static int rs485_count = 0;
+
+static int __init qiyang_parse_feature(char *line)
+{
+    char* start = NULL;
+    char* end = NULL;
+    char data[16];
+    const char rs485_name[] = "rs485:";
+    printk("qiyang_parse_feature: %s\n", line);
+
+    start = strstr(line, rs485_name);
+    end = strstr(line, "#");
+    if(!end)
+        end=start+strlen(start);
+
+    memset(data, 0, sizeof(0));
+    memcpy(data, start+strlen(rs485_name), end-start);
+    rs485_count = simple_strtoul(data, NULL, 10);
+    //printk("rs485_count: %d\n", rs485_count);
+
+    return 1;
+}
+
+__setup("imx6_feature=", qiyang_parse_feature);
 
 
 static const struct esdhc_platform_data mx6q_qy_imx6s_sd3_data __initconst = {
@@ -140,12 +169,38 @@ static const struct anatop_thermal_platform_data
 		.name = "anatop_thermal",
 };
 
+static const struct imxuart_platform_data imx_uart_data[] = {
+	{
+		.is_rs485 = 1,
+		.rs485_flow_ctrl_gpio	= QY_RS485_1_FLOW_GPIO,
+	},
+	{
+		.is_rs485 = 1,
+		.rs485_flow_ctrl_gpio	= QY_RS485_2_FLOW_GPIO,
+	},
+};
+
 static inline void mx6q_qy_imx6s_init_uart(void)
 {
 	imx6q_add_imx_uart(4, NULL);
 	imx6q_add_imx_uart(3, NULL);
-	imx6q_add_imx_uart(2, NULL);
-	imx6q_add_imx_uart(1, NULL);
+    switch(rs485_count)
+    {
+        case 0:
+        	imx6q_add_imx_uart(2, NULL);
+        	imx6q_add_imx_uart(1, NULL);
+        break;
+        
+        case 1:
+        	imx6q_add_imx_uart(2, NULL);
+        	imx6q_add_imx_uart(1, &imx_uart_data[0]);
+        break;
+        
+        case 2:
+        	imx6q_add_imx_uart(2, &imx_uart_data[1]);
+        	imx6q_add_imx_uart(1, &imx_uart_data[0]);
+        break;
+    }
 	imx6q_add_imx_uart(0, NULL);
 }
 

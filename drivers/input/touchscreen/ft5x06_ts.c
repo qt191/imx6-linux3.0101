@@ -36,11 +36,10 @@
 #include <linux/irq.h>
 
 #define GPIO_TO_PIN(bank, gpio) (32 * (bank-1) + (gpio))
-#define GPIO4_25                 GPIO_TO_PIN(4, 25)
-#define GPIO4_27                 GPIO_TO_PIN(4, 27)
-#define GPIO_INT                GPIO4_25
-#define GPIO_RESET              GPIO4_27
-
+#define GPIO7_13	                GPIO_TO_PIN(7, 13)
+#define GPIO4_5                 GPIO_TO_PIN(4, 5)
+#define GPIO_INT                GPIO7_13
+#define GPIO_RESET              GPIO4_5
 
 #define ATTB                GPIO_INT
 #define get_attb_value      gpio_get_value

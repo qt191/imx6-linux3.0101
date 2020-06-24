@@ -252,7 +252,7 @@ module_init(watchdog_init);
 
 module_exit(watchdog_exit);
 
-MODULE_DESCRIPTION("Driver for QIyang AM1808 Watchdog");
+MODULE_DESCRIPTION("Driver for QiYang imx6 Watchdog");
 MODULE_AUTHOR("Jio");
 MODULE_LICENSE("GPL");
 MODULE_ALIAS("gpio:watchdog");

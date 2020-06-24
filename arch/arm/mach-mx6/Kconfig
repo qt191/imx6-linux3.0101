@@ -77,8 +77,8 @@ config MACH_MX6Q_ARM2
 	  Include support for i.MX 6Quad Armadillo2 platform. This includes specific
 	  configurations for the board and its peripherals.
 
-config MACH_MX6Q_QIYANG_DEV
-	bool "Support i.MX 6Quad QIYANG development platform"
+config MACH_MX6Q_QIYANG
+	bool "Support i.MX 6Quad QIYANG platform"
 	select ARCH_MX6Q
 	select SOC_IMX6Q
 	select IMX_HAVE_PLATFORM_IMX_UART

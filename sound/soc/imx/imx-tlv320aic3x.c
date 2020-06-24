@@ -157,6 +157,8 @@ static int __init qiyang_tlv320_init(void)
 	ret = platform_driver_register(&imx_tlv320_audio_driver);
         if (ret)
                 return -ENOMEM;
+	if(!machine_is_mx6q_qiyang())
+		return 0;
 	qiyang_tlv320_snd_device = platform_device_alloc("soc-audio", 6);
 	if (!qiyang_tlv320_snd_device)
 		return -ENOMEM;

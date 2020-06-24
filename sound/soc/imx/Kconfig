@@ -62,7 +62,7 @@ config SND_SOC_IMX_SGTL5000
 
 config SND_SOC_IMX_TLV320AIC3X
 	tristate "SoC Audio support for i.MX boards with tlv320aic3x"
-        depends on I2C
+        depends on I2C && MACH_MX6Q_QIYANG
 	select SND_SOC_TLV320AIC3X
         select SND_MXC_SOC_MX2
         help
