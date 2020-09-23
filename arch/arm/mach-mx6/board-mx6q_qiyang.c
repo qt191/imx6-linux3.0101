@@ -1236,10 +1236,19 @@ static void imx6_buzzer_init(void)
 /* matrix keypad  */
 #ifdef CONFIG_KEYBOARD_MATRIX
 static const uint32_t imx_sabresd_matrix_keys[] = {
-   KEY(0,1, KEY_2), KEY(1,1, KEY_5), KEY(2,1, KEY_8), KEY(3,1, KEY_0), 
-   KEY(0,0, KEY_1), KEY(1,0, KEY_4), KEY(2,0, KEY_7), KEY(3,0, KEY_BACKSPACE), 
-   KEY(0,3, KEY_EXIT), KEY(1,3, KEY_UP), KEY(2,3,KEY_DOWN),KEY(3,3,KEY_ENTER), 
-   KEY(0,2, KEY_3), KEY(1,2, KEY_6), KEY(2,2, KEY_9), KEY(3,2, KEY_DOT), 
+
+   KEY(0,0, KEY_0), KEY(1,0, KEY_1), KEY(2,0, KEY_2), KEY(3,0, KEY_3),KEY(4,0, KEY_4),KEY(5,0, KEY_5),
+   KEY(0,1, KEY_6), KEY(1,1, KEY_7), KEY(2,1, KEY_8), KEY(3,1, KEY_9),KEY(4,1, KEY_Q),KEY(5,1, KEY_W),
+   KEY(0,2, KEY_E), KEY(1,2, KEY_R), KEY(2,2, KEY_T), KEY(3,2, KEY_Y),KEY(4,2, KEY_U),KEY(5,2, KEY_I),
+
+   KEY(0,3, KEY_O), KEY(1,3, KEY_A), KEY(2,3, KEY_S), KEY(3,3, KEY_D),KEY(4,3, KEY_F),KEY(5,3, KEY_G),
+   KEY(0,4, KEY_H), KEY(1,4, KEY_J), KEY(2,4, KEY_K), KEY(3,4, KEY_L),KEY(4,4, KEY_Z),KEY(5,4, KEY_X),
+   KEY(0,5, KEY_C), KEY(1,5, KEY_V), KEY(2,5, KEY_B), KEY(3,5, KEY_N),KEY(4,5, KEY_M),KEY(5,5, KEY_F1),
+	
+   //KEY(0,1, KEY_2), KEY(1,1, KEY_5), KEY(2,1, KEY_8), KEY(3,1, KEY_0), 
+   //KEY(0,0, KEY_1), KEY(1,0, KEY_4), KEY(2,0, KEY_7), KEY(3,0, KEY_BACKSPACE), 
+   //KEY(0,3, KEY_EXIT), KEY(1,3, KEY_UP), KEY(2,3,KEY_DOWN),KEY(3,3,KEY_ENTER), 
+   //KEY(0,2, KEY_3), KEY(1,2, KEY_6), KEY(2,2, KEY_9), KEY(3,2, KEY_DOT), 
 };
 
 const struct matrix_keymap_data imx_sabresd_keymap_data = {
@@ -1249,12 +1258,17 @@ const struct matrix_keymap_data imx_sabresd_keymap_data = {
 
 static const unsigned int imx_sabresd_keypad_row_gpios[] = {
 	
-	IMX_GPIO_NR(2, 0), IMX_GPIO_NR(2, 2), IMX_GPIO_NR(2, 4),IMX_GPIO_NR(2, 6)
+	//IMX_GPIO_NR(2, 0), IMX_GPIO_NR(2, 2), IMX_GPIO_NR(2, 4),IMX_GPIO_NR(2, 6)
+	IMX_GPIO_NR(2, 16), IMX_GPIO_NR(2, 17), IMX_GPIO_NR(2, 18),IMX_GPIO_NR(2, 19),
+	IMX_GPIO_NR(2, 0), IMX_GPIO_NR(2, 2), 		
 };
 
 static const unsigned int imx_sabresd_keypad_col_gpios[] = {
 	
-	IMX_GPIO_NR(2, 1), IMX_GPIO_NR(2, 3),IMX_GPIO_NR(2, 5), IMX_GPIO_NR(2, 7)
+	//IMX_GPIO_NR(2, 1), IMX_GPIO_NR(2, 3),IMX_GPIO_NR(2, 5), IMX_GPIO_NR(2, 7)
+		IMX_GPIO_NR(2, 20), IMX_GPIO_NR(2, 21),IMX_GPIO_NR(2, 22), IMX_GPIO_NR(2, 23),
+		IMX_GPIO_NR(2, 1), IMX_GPIO_NR(2, 3),
+		
 };
 
 static struct matrix_keypad_platform_data imx_sabresd_keypad_platform_data = {

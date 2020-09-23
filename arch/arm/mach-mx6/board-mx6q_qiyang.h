@@ -73,14 +73,15 @@ static iomux_v3_cfg_t mx6q_qy_imx6s_misc_pads[] =
 	MX6Q_PAD_GPIO_7__GPIO_1_7,     //pcie disable
 	MX6Q_PAD_GPIO_8__GPIO_1_8,     //pcie reset
 
-	MX6Q_PAD_EIM_A22__GPIO_2_16,   //j31_1
-	MX6Q_PAD_EIM_A21__GPIO_2_17,   //j31_3
-	MX6Q_PAD_EIM_A20__GPIO_2_18,   //j31_5
-	MX6Q_PAD_EIM_A19__GPIO_2_19,   //j31_7
-	MX6Q_PAD_EIM_A18__GPIO_2_20,   //j31_2
-	MX6Q_PAD_EIM_A17__GPIO_2_21,   //j31_4
-	MX6Q_PAD_EIM_A16__GPIO_2_22,   //j31_6
-	MX6Q_PAD_EIM_CS0__GPIO_2_23,   //j31_8 
+	MX6Q_PAD_EIM_A22__GPIO_2_16,   //j31_1   KEY_X0			
+	MX6Q_PAD_EIM_A21__GPIO_2_17,   //j31_3   KEY_X1
+	MX6Q_PAD_EIM_A20__GPIO_2_18,   //j31_5   KEY_X2
+	MX6Q_PAD_EIM_A19__GPIO_2_19,   //j31_7   KEY_X3
+	
+	MX6Q_PAD_EIM_A18__GPIO_2_20,   //j31_2  KEY_Y0
+	MX6Q_PAD_EIM_A17__GPIO_2_21,   //j31_4  KEY_Y1
+	MX6Q_PAD_EIM_A16__GPIO_2_22,   //j31_6  KEY_Y2
+	MX6Q_PAD_EIM_CS0__GPIO_2_23,   //j31_8  KEY_Y3
 
 	MX6Q_PAD_SD3_DAT6__GPIO_6_18,  //otg pwr
 	MX6Q_PAD_SD3_RST__GPIO_7_8,    //otg id
@@ -93,10 +94,10 @@ static iomux_v3_cfg_t mx6q_qy_imx6s_misc_pads[] =
 };
 static iomux_v3_cfg_t mx6q_qy_imx6s_matrix_keys_pads[] = 
 {
-	MX6Q_PAD_NANDF_D0__GPIO_2_0,
-	MX6Q_PAD_NANDF_D1__GPIO_2_1,
-	MX6Q_PAD_NANDF_D2__GPIO_2_2,
-	MX6Q_PAD_NANDF_D3__GPIO_2_3,
+	MX6Q_PAD_NANDF_D0__GPIO_2_0,  //KEY_X4			
+	MX6Q_PAD_NANDF_D1__GPIO_2_1,  //KEY_Y4
+	MX6Q_PAD_NANDF_D2__GPIO_2_2,  //KEY_X5  	
+	MX6Q_PAD_NANDF_D3__GPIO_2_3,  //KEY_Y5
 
 	MX6Q_PAD_NANDF_D4__GPIO_2_4,
 	MX6Q_PAD_NANDF_D5__GPIO_2_5,
