@@ -605,6 +605,11 @@ static const struct hid_device_id mt_devices[] = {
                   { HID_USB_DEVICE(0x222A,0x0010) },
                   { HID_USB_DEVICE(0x222A,0x0001) },
 
+         { .driver_data = MT_CLS_DEFAULT,
+            HID_USB_DEVICE(USB_VENDOR_ID_MYSCREEN,
+            USB_DEVICE_ID_MYSCREEN) },
+
+
 	/* ActionStar panels */
 	{ .driver_data = MT_CLS_DEFAULT,
 		HID_USB_DEVICE(USB_VENDOR_ID_ACTIONSTAR,

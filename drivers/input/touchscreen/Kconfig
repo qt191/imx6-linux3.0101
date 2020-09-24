@@ -30,6 +30,13 @@ config TOUCHSCREEN_FT5x06
           Say y here to support the touchscreen found on
           ft5x06_ts
           
+config TOUCHSCREEN_ICN85
+       tristate "ICN85"
+        depends on I2C
+        help
+          Say y here to support the touchscreen found on
+          icn85_ts
+
 config TOUCHSCREEN_ADS7846
 	tristate "ADS7846/TSC2046/AD7873 and AD(S)7843 based touchscreens"
 	depends on SPI_MASTER
