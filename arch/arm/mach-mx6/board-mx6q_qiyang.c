@@ -1237,12 +1237,12 @@ static void imx6_buzzer_init(void)
 #ifdef CONFIG_KEYBOARD_MATRIX
 static const uint32_t imx_sabresd_matrix_keys[] = {
 
-   KEY(0,0, KEY_0), KEY(1,0, KEY_1), KEY(2,0, KEY_2), KEY(3,0, KEY_3),KEY(4,0, KEY_4),KEY(5,0, KEY_5),
-   KEY(0,1, KEY_6), KEY(1,1, KEY_7), KEY(2,1, KEY_8), KEY(3,1, KEY_9),KEY(4,1, KEY_Q),KEY(5,1, KEY_W),
-   KEY(0,2, KEY_E), KEY(1,2, KEY_R), KEY(2,2, KEY_T), KEY(3,2, KEY_Y),KEY(4,2, KEY_U),KEY(5,2, KEY_I),
+   KEY(0,0, KEY_TAB), KEY(1,0, KEY_3), KEY(2,0, KEY_8), KEY(3,0, KEY_UP),KEY(4,0, KEY_F1),KEY(5,0, KEY_F6),
+   KEY(0,1, KEY_BACKSPACE), KEY(1,1, KEY_4), KEY(2,1, KEY_9), KEY(3,1, KEY_LEFT),KEY(4,1, KEY_F2),KEY(5,1, KEY_F7),
+   KEY(0,2, KEY_E), KEY(1,2, KEY_5), KEY(2,2, KEY_0), KEY(3,2, KEY_HOME),KEY(4,2, KEY_F3),KEY(5,2, KEY_F8),
 
-   KEY(0,3, KEY_O), KEY(1,3, KEY_A), KEY(2,3, KEY_S), KEY(3,3, KEY_D),KEY(4,3, KEY_F),KEY(5,3, KEY_G),
-   KEY(0,4, KEY_H), KEY(1,4, KEY_J), KEY(2,4, KEY_K), KEY(3,4, KEY_L),KEY(4,4, KEY_Z),KEY(5,4, KEY_X),
+   KEY(0,3, KEY_1), KEY(1,3, KEY_6), KEY(2,3, KEY_DOT), KEY(3,3, KEY_RIGHT),KEY(4,3, KEY_F4),KEY(5,3, KEY_G),
+   KEY(0,4, KEY_2), KEY(1,4, KEY_7), KEY(2,4, KEY_ENTER), KEY(3,4, KEY_DOWN),KEY(4,4, KEY_F5),KEY(5,4, KEY_X),
    KEY(0,5, KEY_C), KEY(1,5, KEY_V), KEY(2,5, KEY_B), KEY(3,5, KEY_N),KEY(4,5, KEY_M),KEY(5,5, KEY_F1),
 	
    //KEY(0,1, KEY_2), KEY(1,1, KEY_5), KEY(2,1, KEY_8), KEY(3,1, KEY_0), 
