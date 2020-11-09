@@ -100,6 +100,7 @@
 
 #define QY_IMX6S_SPI5_CS0        IMX_GPIO_NR(1 , 17)
 #define QY_IMX6S_SPI5_CS1        IMX_GPIO_NR(1 , 19)
+#define QY_IMX6S_SPI4_CS0        IMX_GPIO_NR(3 , 20)
 
 #define QY_IMX6S_TS_INT          IMX_GPIO_NR(5 , 17)
 
@@ -318,6 +319,7 @@ static const struct spi_imx_master mx6q_spi5_data __initconst = {
 };
 
 static struct spi_board_info imx6_spi5_device[] __initdata = {
+#if 0
 #if defined(CONFIG_MTD_M25P80)
         {
             .modalias = "m25p80",
@@ -326,6 +328,7 @@ static struct spi_board_info imx6_spi5_device[] __initdata = {
             .chip_select = 0,
             .platform_data = &imx6_qy_imx6s__spi_flash_data,
         },
+#endif
 #endif
        {
                 .modalias       = "ads7846",
@@ -338,11 +341,39 @@ static struct spi_board_info imx6_spi5_device[] __initdata = {
 
 
 };
+
+static int mx6q_spi4_cs[] = {
+        QY_IMX6S_SPI4_CS0,
+        
+};
+
+static const struct spi_imx_master mx6q_spi4_data __initconst = {
+        .chipselect     = mx6q_spi4_cs,
+        .num_chipselect = ARRAY_SIZE(mx6q_spi4_cs),
+};
+
+static struct spi_board_info imx6_spi4_device[] __initdata = {
+#if defined(CONFIG_MTD_M25P80)
+        {
+            .modalias = "m25p80",
+            .max_speed_hz = 20000000, /* max spi clock (SCK) speed in HZ */
+            .bus_num = 3,
+            .chip_select = 0,
+            .platform_data = &imx6_qy_imx6s__spi_flash_data,
+        },
+#endif
+      
+};
+
 static void spi_device_init(void)
 {
-	if(cpu_is_mx6q())
+	if(cpu_is_mx6q()){
+		
 		spi_register_board_info(imx6_spi5_device,
                                 ARRAY_SIZE(imx6_spi5_device));
+	    spi_register_board_info(imx6_spi4_device,
+                                ARRAY_SIZE(imx6_spi4_device));
+		}
 }
 
 static void mx6q_mipi_powerdown(int powerdown)
@@ -1325,7 +1356,8 @@ static void __init mx6_qy_imx6s_board_init(void)
 	i2c_register_board_info(2, mxc_i2c2_board_info,
 			ARRAY_SIZE(mxc_i2c2_board_info));
 	/* SPI */
-	imx6q_add_ecspi(4, &mx6q_spi5_data);
+	//imx6q_add_ecspi(4, &mx6q_spi5_data);
+	imx6q_add_ecspi(3, &mx6q_spi4_data);
 	spi_device_init();
 
 	imx6q_add_mxc_hdmi(&hdmi_data);

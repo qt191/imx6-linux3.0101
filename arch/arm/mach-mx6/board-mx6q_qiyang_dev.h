@@ -36,6 +36,13 @@ static iomux_v3_cfg_t mx6q_qy_imx6s_spi_pads[] =
 	MX6Q_PAD_SD1_DAT0__ECSPI5_MISO,
 	MX6Q_PAD_SD1_DAT1__GPIO_1_17, //cs0
 	MX6Q_PAD_SD1_DAT2__GPIO_1_19, //cs1
+
+	MX6Q_PAD_EIM_D20__GPIO_3_20,  //spi4 cs0
+    MX6Q_PAD_EIM_D21__ECSPI4_SCLK,
+    MX6Q_PAD_EIM_D22__ECSPI4_MISO,
+    MX6Q_PAD_EIM_D28__ECSPI4_MOSI,
+	
+    
 };
 static iomux_v3_cfg_t mx6q_qy_imx6s_misc_pads[] = 
 {
